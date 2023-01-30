@@ -1,0 +1,149 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background-color: gainsboro;
+}
+/***************************************Стили основной части таблицы и ее итемов***************************************/
+.tableOfItems {
+   margin:  100px auto;
+   width: 20%;
+}
+
+.tableBody {
+   position: relative;
+  width: 100%;
+   min-height: 30px;
+   height: auto;
+   background-color: white;
+   padding: 5px;
+   border-radius: 4px;
+   box-shadow: 2px 3px 8px black;
+}
+
+.item {
+   background-color: white;
+   margin: 5px;
+   border: 1px solid gainsboro;
+   border-radius: 4px;
+   height: auto;
+   text-align: left;
+   line-height: 30px;
+   padding: 3px;
+   cursor: pointer;
+   position: relative;
+   user-select: none;
+   -moz-user-select: none;
+   -webkit-user-select: none;
+}
+
+.item:hover {
+   background-color: aliceblue;
+}
+
+.item.disabled{
+   opacity: .3;
+}
+
+.itemDrag {
+   width: 100%;
+   background-color: white;
+   margin: 5px;
+   border: 1px solid gainsboro;
+   border-radius: 4px;
+   height: auto;
+   text-align: left;
+   line-height: 30px;
+   padding: 3px;
+   cursor: pointer;
+   user-select: none;
+}
+/****************************************************************************************/
+
+/***************************Стили раздела таблицы с параметрами сортировки***************************/
+.tableConfig {
+   display: flex;
+   width: 100%;
+   min-height: 30px;
+   height: auto;
+   background-color: white;
+   margin-bottom: 10px;
+   border-radius: 4px;
+   box-shadow: 2px 2px 8px black;
+}
+
+.tableConfig span {
+   line-height: 30px;
+   margin-left: 10px;
+}
+/*********************************************************************************************************************/
+
+/***************************************Стили подсказки***************************************/
+.tip {
+   position: absolute;
+   background-color: white;
+   padding:  5px;
+   border-radius: 4px;
+   top:0;
+   left: 107%;
+   width: auto;
+   max-width: 600px;
+   min-width: 200px;
+}
+
+.tipItem {
+   display: flex;
+   height: auto;
+   margin: 5px 0;
+   border-bottom: 1px solid gainsboro;
+}
+
+.tipItem:last-child{
+   border: none;
+   justify-content: space-between
+}
+
+.tipSpan {
+   flex-shrink: 0;
+   width: 150px;
+   margin-right: 5px;
+   text-align: left;
+}
+/***************************************/
+
+/******************Стили пагинации******************/
+#count_items, #sort {
+   height: 25px;
+   margin: 5px;
+   border-radius: 4px;
+   outline: none;
+}
+
+.pagination {
+   width: 100%;
+   height: auto;
+   background-color: white;
+   margin-top: 10px;
+   border-radius: 4px;
+   box-shadow: 2px 2px 8px black;
+   display: flex;
+   justify-content: space-around;
+   padding: 4px;
+}
+
+.paginationSpan{
+   font-weight: 600;
+   cursor: pointer;
+   min-width: 14px;
+   text-align: center;
+}
+
+.picked {
+   border-bottom: 3px solid black;
+   border-radius: 20%;
+}
+
+/***********************/

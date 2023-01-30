@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Zaytsev Maksim test task</title>
+   <link rel="stylesheet" href="/css/style.css">
+   <link rel="stylesheet" href="/css/style.css">
+   <link rel="stylesheet" href="/css/style.css">
+   <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+   <div class="tableOfItems">
+      <div class="tableConfig">
+         <span>Count on page:</span>
+         <div class="countOfItems">
+            <select name ='count' id ='count_items'>
+               <option value ='5'>5</option>
+               <option value ='10' selected="selected">10</option>
+               <option value ='15'>15</option>
+               <option value ='20'>20</option>
+            </select>
+         </div>
+         <div class="sortBy">
+            <span>Sort by:</span>
+            <select name="sortBy" id="sort">
+               <option value="">None</option>
+               <option value="Brand">Brand</option>
+               <option value="Price-low">Price &#8648</option>
+               <option value="Price-hight">Price &#8650</option>
+               <option value="Rating-low">Rating &#8648</option>
+               <option value="Rating-hight">Rating &#8650</option>
+               <option value="Category">Category</option>
+            </select>
+         </div>
+      </div>
+      <div class="tableBody" id="tableBody"></div>
+      <div class="pagination" id="pages">
+      </div>
+   </div>
+   <script src="./js/script.js"></script>
+</body>
+</html>
