@@ -10,8 +10,10 @@ body {
 /***************************************Стили основной части таблицы и ее итемов***************************************/
 .tableOfItems {
    margin:  100px auto;
+   min-width: 310px;
    width: 20%;
 }
+
 
 .tableBody {
    position: relative;
