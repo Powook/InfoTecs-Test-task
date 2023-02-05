@@ -113,6 +113,7 @@ function showTip(item, tableItems) { // Функция, показывающая
    item.style.position = 'relative'
    let description = document.createElement('div')
    description.classList.add('tip')
+
    let product = findById(tableItems, item.id)
 
    description.insertAdjacentHTML('afterbegin', `<div>
@@ -133,7 +134,14 @@ function showTip(item, tableItems) { // Функция, показывающая
          <span class='tipSpan'>Rating: ${product.rating}</span> 
       </div>
    </div>`) 
+   let bottomScroll = document.documentElement.scrollTop + document.documentElement.clientHeight - (tableBody.offsetTop+tableBody.offsetHeight) // Расстояние от низа экрана до нижней части таблицы
    item.insertAdjacentElement('beforeend', description)
+
+   if (description.offsetHeight>tableBody.offsetHeight - item.offsetTop + bottomScroll) { // Здесь прописана логика того, чтобы описание не уходило за пределы видимой части, 
+      // если юзер наводит курсор на самый нижний элемент, подсказка которого больше, чем расстояние от элемента до самого низа странцы
+      description.style.top = -(description.offsetHeight  - (tableBody.offsetHeight - item.offsetTop + bottomScroll -5 ) ) +'px'
+   }
+
 }
 
 function removeTip(eventTarget) { // функция, удаляющая подсказку
@@ -171,15 +179,15 @@ function dragndrop(element, tableItems, event) { // Общая функция п
       }
 
       elemCopy.hidden = true // Смотрим над каким элементом мы сейчас находимся, если не написать данную строку, то курсор всегда будет находиться над предметом который мы тащим
-      let currentItem = findById(tableItems, setCurrentItemID(document.elementsFromPoint(pageX, pageY)[0].id)) // Ищем по ID в нашем списке элементов
+      let currentItem = findById(tableItems, setCurrentItemID(document.elementsFromPoint(pageX, pageY-window.scrollY)[0].id)) // Ищем по ID в нашем списке элементов
 
       if (currentItem) {
          document.getElementById(currentItem.id).insertAdjacentElement('afterend', element) // вставляем перетаскиваемый объект после того, над которым мы тащим копию перетаскиваемого объекта. Визуализация перетаскивания
       }
-      setCurrentItemID(document.elementsFromPoint(pageX, pageY)[0].id) // берем самый глубоковложенный элемент по координатам Х и Y
+      setCurrentItemID(document.elementsFromPoint(pageX, pageY-window.scrollY)[0].id) // берем самый глубоковложенный элемент по координатам Х и Y
       elemCopy.hidden = false
       elemCopy.style.left = 0 + 'px' // Ограничение движения итема по горизонтали
-      elemCopy.style.top = element.offsetTop - element.getBoundingClientRect().y + pageY - element.offsetHeight / 2 + 'px' // логика движения итема по вертикали
+      elemCopy.style.top = element.offsetTop- window.scrollY - element.getBoundingClientRect().y + pageY - element.offsetHeight / 2 + 'px' // логика движения итема по вертикали
    }
 
    function mouseMove(event) { // оборачиваем функцию move в другую функцию, для того чтобы потом ее можно было удалить через removeEventListener
